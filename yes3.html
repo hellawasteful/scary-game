@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Did You See Me?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .typing-animation {
+            overflow: hidden; /* Hide overflowing text */
+            white-space: nowrap; /* Prevent wrapping */
+            width: 0; /* Start with 0 width */
+            animation: typing 4s steps(20, end) forwards; /* Typing animation */
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="typing-animation" id="text">Did you see me?</div>
+
+    <script>
+        // Function to redirect to yes4.html
+        function redirectToYes4() {
+            window.location.href = "yes4.html";
+        }
+
+        // Detect when typing animation completes
+        document.addEventListener("DOMContentLoaded", function() {
+            var textElement = document.getElementById("text");
+            var animationDuration = parseFloat(getComputedStyle(textElement).animationDuration) * 1000; // Convert seconds to milliseconds
+            setTimeout(redirectToYes4, animationDuration);
+        });
+    </script>
+</body>
+</html>

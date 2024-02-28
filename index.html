@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="container" class="container">
+        <h1>Guess the Number</h1>
+        <p>Guess a number between 1 and 50:</p>
+        <input type="text" id="userGuess" class="input-text">
+        <button onclick="checkGuess()" class="button">Submit Guess</button>
+        <p id="message" class="white-text"></p>
+        <button onclick="requestWebcamPermission()" class="button">Allow Webcam Access</button>
+    </div>
+    <div id="victoryMessage" class="container victory-message" style="display: none;"></div>
+    <script src="script.js"></script>
+    <script>
+        function requestWebcamPermission() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    console.log("Webcam access granted.");
+                })
+                .catch(function(err) {
+                    console.log("Webcam access denied: " + err);
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let me ask a few questions</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>let me ask a few questions</h1>
+        <div id="question-container"></div>
+        <input type="text" id="user-answer" placeholder="Type 'yes' or 'no'">
+        <button onclick="nextQuestion()">Next</button>
+    </div>
+
+    <script>
+        var questions = [
+            "Do you ever feel like you're being watched when you're alone?",
+            "Have you ever heard strange noises in the middle of the night?",
+            "Do you believe in ghosts?",
+            "do you think there could be one with you right now?",
+            "Do you sometimes feel a chill down your spine for no reason?",
+            "Have you ever seen something out of the corner of your eye but when you looked, nothing was there?",
+            "did you miss me?",
+            "Have you ever felt like something was stalking you?",
+            "Do you ever feel like someone is hiding in your house?",
+            "Have you ever had the feeling that you're not alone?"
+        ];
+
+        var questionIndex = 0;
+        var questionContainer = document.getElementById("question-container");
+        var userAnswers = [];
+
+        function nextQuestion() {
+            var userAnswer = document.getElementById("user-answer").value.toLowerCase();
+            if (userAnswer === "yes" || userAnswer === "no") {
+                userAnswers.push(userAnswer);
+                if (questionIndex < questions.length - 1) {
+                    questionContainer.innerHTML = "<p>" + questions[questionIndex] + "</p>";
+                    questionIndex++;
+                    document.getElementById("user-answer").value = "";
+                } else {
+                    // Redirect to yes2.html
+                    window.location.href = "yes2.html";
+                }
+            } else {
+                alert("Please type 'yes' or 'no'.");
+            }
+        }
+
+        // Load first question on page load
+        window.onload = function() {
+            nextQuestion();
+        };
+    </script>
+</body>
+</html>

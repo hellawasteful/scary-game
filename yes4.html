@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You See Me Now?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Behind text */
+        }
+        .text {
+            position: absolute;
+            color: red;
+            z-index: 1; /* Above video */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay loop muted>
+        <source src="scary.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        // Function to show multiple "Do you see me now?" texts
+        function showText() {
+            var textContainer = document.createElement("div");
+            textContainer.style.position = "absolute";
+            textContainer.style.width = "100%";
+            textContainer.style.height = "100%";
+            textContainer.style.zIndex = "1"; // Above video
+            textContainer.style.pointerEvents = "none"; // Make text container ignore mouse events
+
+            for (var i = 0; i < 30; i++) { // Create 30 text elements
+                var textElement = document.createElement("div");
+                textElement.className = "text";
+                textElement.innerText = "Do you see me now?";
+                textElement.style.left = Math.random() * (window.innerWidth - 200) + "px"; // Random horizontal position
+                textElement.style.top = Math.random() * (window.innerHeight - 50) + "px"; // Random vertical position
+                textContainer.appendChild(textElement);
+            }
+
+            document.body.appendChild(textContainer);
+
+            setTimeout(function() {
+                window.location.href = "yes5.html"; // Redirect to yes5.html after 7 seconds
+            }, 7000);
+        }
+
+        // Show text spam immediately when the page loads
+        showText();
+    </script>
+</body>
+</html>

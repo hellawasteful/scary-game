@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Display</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+        #video {
+            filter: invert(100%); /* Invert colors */
+            width: 100%;
+            height: auto;
+            transform: scaleX(-1); /* Invert horizontally (mirror) */
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay></video>
+
+    <script>
+        // Request permission to access the user's webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('video');
+                video.srcObject = stream;
+            })
+            .catch(function(err) {
+                console.log("An error occurred: " + err);
+            });
+
+        // Redirect to yes3.html after 2 seconds
+        setTimeout(function() {
+            window.location.href = "yes3.html";
+        }, 2000);
+    </script>
+</body>
+</html>
